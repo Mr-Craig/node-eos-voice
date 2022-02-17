@@ -1,0 +1,32 @@
+{
+  "name": "node-eos-voice",
+  "version": "1.0.0",
+  "description": "EOS Voice Web API Wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mr-Craig/node-eos-voice.git"
+  },
+  "keywords": [
+    "EOS",
+    "voice",
+    "epic",
+    "games",
+    "epic",
+    "online",
+    "services"
+  ],
+  "author": "Mr-Craig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mr-Craig/node-eos-voice/issues"
+  },
+  "homepage": "https://github.com/Mr-Craig/node-eos-voice#readme",
+  "dependencies": {
+    "request": "^2.88.2",
+    "uniqid": "^5.4.0"
+  }
+}
