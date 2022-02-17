@@ -1,6 +1,6 @@
 {
   "name": "node-eos-voice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "EOS Voice Web API Wrapper",
   "main": "index.js",
   "scripts": {
