@@ -4,7 +4,7 @@
  
  Usage:
  ```
-const EOSVoice = require('eos-voice');
+const EOSVoice = require('node-eos-voice');
 EOSVoice.init({
     deploymentId: "",
     clientId: "",
