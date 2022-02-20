@@ -24,7 +24,9 @@ EOSVoice.init = async (data) => {
 EOSVoice.getConnectToken = async () => {
     return new Promise((resolve, reject) => {
         const basicToken = Buffer.from(`${EOSVoice.options.clientId}:${EOSVoice.options.clientSecret}`).toString('base64');
-        console.log(basicToken);
+        if(EOSVoice.options.verbose) {
+            console.log(basicToken);
+        }
         const nonce = uniqid('eos-');
         request.post({
             url: 'https://api.epicgames.dev/auth/v1/oauth/token',
@@ -55,16 +57,20 @@ EOSVoice.getConnectToken = async () => {
                             return;
                         }
                     }
-                    let dateAs = new Date(body.expires_at);
+                    let dateAs = new Date(EOSVoice.EOSTokenBody.expires_at);
                     EOSVoice.EOSTokenBody.expires_at = dateAs.getTime();
-                    console.log(EOSVoice.EOSTokenBody);
+                    if(EOSVoice.options.verbose) {
+                        console.log(EOSVoice.EOSTokenBody);
+                    }
                     resolve(true);
                 } catch(e) {
                     reject(e);
                     return;
                 }
             } else {
-                console.log(body);
+                if(EOSVoice.options.verbose) {
+                    console.log(body);
+                }
                 reject(`HTTP Code ${response.statusCode}`);
             }
         })
@@ -75,7 +81,7 @@ EOSVoice.getRoomCredentials = async (data) => {
     return new Promise(async (resolve, reject) => {
         if(EOSVoice.EOSTokenBody.expires_at < new Date().getTime()) {
             let success = true;
-            const newToken = EOSVoice.getConnectToken().catch((e) => {
+            await EOSVoice.getConnectToken().catch((e) => {
                 console.log(e);
                 success = false;
             });
